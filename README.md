@@ -22,6 +22,8 @@ This extension is not published on Packagist.
 
 To run it locally, you can install Flarum, then clone the extension in your `packages` folder as described in the [developer documentation](https://docs.flarum.org/extend/start#extension-packaging).
 
+Create a tag with slug `animations` to be used on the homepage.
+
 The extension provides a template for the FoF Upload extension.
 Ideal settings for FoF Upload: MIME type `^text\/(plain|csv)$` and **User-provided file extensions**: `csv`
 
