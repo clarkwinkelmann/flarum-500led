@@ -77,8 +77,8 @@ export default class Player implements ClassComponent<PlayerAttrs> {
                 m('input', {
                     type: 'range',
                     value: this.frame,
-                    min: 0,
-                    max: vnode.attrs.sequence.getFrameCount(),
+                    min: 0, // For now, frame is still zero indexed
+                    max: Math.max(vnode.attrs.sequence.getFrameCount() - 1, 0),
                     oninput: (event: InputEvent) => {
                         this.frame = parseInt((event.target as HTMLInputElement).value);
 
@@ -122,6 +122,9 @@ export default class Player implements ClassComponent<PlayerAttrs> {
             vnode.attrs.tree.setLightsColors(frame);
         }
 
+        // Update current frame label here instead of the end, so it changes while interacting with the slider
+        vnode.dom.querySelector('.current-frame')!.textContent = this.frame + '';
+
         // When the mouse is interacting with the slider, we continue to render but stop moving frames
         if (this.sliderFocused) {
             return;
@@ -132,6 +135,5 @@ export default class Player implements ClassComponent<PlayerAttrs> {
 
         // Update the slider and frame counter outside of Mithril to improve performance
         vnode.dom.querySelector('input')!.value = this.frame + '';
-        vnode.dom.querySelector('.current-frame')!.textContent = this.frame + '';
     }
 }
