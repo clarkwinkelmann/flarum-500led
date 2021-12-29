@@ -1,0 +1,140 @@
+.PlayerControls {
+    display: flex;
+    align-items: center;
+    padding-top: 10px;
+
+    input {
+        flex-grow: 1;
+        margin: 0 10px;
+    }
+}
+
+.PlayerFrame {
+    // Enough for about 4 digits of frames (xxxx/xxxx)
+    min-width: 6em;
+    text-align: right;
+    margin-right: 10px;
+}
+
+tree-embed {
+    display: block;
+    background: white;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+    border-radius: @border-radius;
+    margin: 5px;
+    padding: 10px;
+    width: 520px;
+    min-height: 566px;
+}
+
+.PlayerEmbedLoading {
+    margin-top: 200px;
+    text-align: center;
+    color: @muted-color;
+}
+
+.PlayerEmbedError {
+    margin-top: 200px;
+}
+
+.Post-body {
+    // To make sure the tree-embed margin-top has an effect. Otherwise the shadow is cut by the top of the post
+    padding-top: 5px;
+}
+
+@media @tablet-up {
+    .HomePage > .container {
+        display: flex;
+    }
+}
+
+.HomePagePlayer {
+    width: 500px;
+    min-height: 566px;
+}
+
+.HomePageList {
+    flex-grow: 1;
+    padding-left: 10px;
+
+    input {
+        display: block;
+        width: 100%;
+        background: #eee;
+        padding: 50px;
+    }
+
+    > p {
+        text-align: center;
+        color: @muted-color;
+        margin: 5px 0;
+    }
+
+    .DiscussionList {
+        padding: 0 15px;
+    }
+
+    .DiscussionListItem:hover {
+        background: none;
+    }
+
+    .DiscussionListItem-content {
+        display: flex;
+        align-items: center;
+        padding-left: 0; // Cancel Flarum styles for flex
+        padding-right: 20px; // Keep just a bit for the discussion controls
+    }
+
+    .DiscussionListItem-author {
+        margin: 0; // Cancel Flarum styles for flex
+    }
+
+    // A bit difficult to make look good in flex, also not really needed
+    .DiscussionListItem-badges {
+        display: none;
+    }
+
+    .DiscussionListItem-main {
+        flex-grow: 1;
+        margin-left: 10px; // Cancel Flarum styles for flex
+    }
+
+    .DiscussionListItem-count {
+        display: none;
+    }
+
+    .item-tags {
+        display: none;
+    }
+}
+
+.HomePageBody {
+    .Header-controls {
+        .item-search,
+        .item-signUp,
+        .item-logIn {
+            display: none;
+        }
+    }
+}
+
+.App:not(.HomePageBody) {
+    .Header-controls {
+        .item-500led-forum {
+            display: none;
+        }
+    }
+}
+
+.HomePageControls {
+    white-space: pre;
+}
+
+.HowToHero {
+    margin-top: 40px;
+    text-align: left;
+
+    h2 {
+        margin-bottom: 10px;
+    }
+}
