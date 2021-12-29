@@ -1,3 +1,60 @@
+.Tree {
+    position: relative;
+    background: black;
+
+    &:hover .TreeButtons {
+        opacity: 1;
+    }
+
+    &.fullscreen {
+        position: fixed;
+        z-index: 2000;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+
+        canvas {
+            width: 100vw;
+            height: 100vh;
+        }
+    }
+
+    canvas {
+        width: 500px;
+        height: 500px;
+        max-width: 100%;
+    }
+}
+
+.TreeButtons {
+    @media @tablet-up {
+        opacity: 0;
+    }
+    transition: opacity 0.3s;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    text-align: right;
+    padding: 15px;
+    pointer-events: none;
+
+    .Button {
+        pointer-events: auto;
+        color: white;
+        margin-left: 5px;
+
+        &:hover {
+            color: #ccc;
+        }
+    }
+
+    .Button-icon {
+        font-size: 24px;
+    }
+}
+
 .PlayerControls {
     display: flex;
     align-items: center;
@@ -24,6 +81,7 @@ tree-embed {
     margin: 5px;
     padding: 10px;
     width: 520px;
+    max-width: 100%;
     min-height: 566px;
 }
 
@@ -50,6 +108,7 @@ tree-embed {
 
 .HomePagePlayer {
     width: 500px;
+    max-width: 100%;
     min-height: 566px;
 }
 

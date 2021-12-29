@@ -65,8 +65,6 @@ export default class Player implements ClassComponent<PlayerAttrs> {
         return m('.Player', [
             m(Tree, {
                 tree: vnode.attrs.tree,
-                width: 500,
-                height: 500,
             }),
             m('.PlayerControls', [
                 m(Button, {
