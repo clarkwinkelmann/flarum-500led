@@ -1,6 +1,6 @@
 <?php
 
-namespace ClarkWinkelmann\RollDie;
+namespace ClarkWinkelmann\LED500;
 
 use Flarum\Extend;
 use s9e\TextFormatter\Configurator;
@@ -21,4 +21,7 @@ return [
                 '<tree-embed url="{URL}" framerate="{@framerate}"></tree-embed>'
             );
         }),
+
+    (new Extend\ServiceProvider())
+        ->register(UploadServiceProvider::class),
 ];

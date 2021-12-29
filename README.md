@@ -16,6 +16,8 @@ This extension is not published on Packagist.
 
 To run it locally, you can install Flarum, then clone the extension in your `packages` folder as described in the [developer documentation](https://docs.flarum.org/extend/start#extension-packaging).
 
+Ideal settings for FoF Upload: MIME type `^text\/(plain|csv)$` and *User-provided file extensions*: `csv`
+
 ## Links
 
 - [Simulator source code](https://github.com/clarkwinkelmann/flarum-500led)

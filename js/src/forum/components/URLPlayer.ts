@@ -17,10 +17,9 @@ export default class URLPlayer implements ClassComponent<URLPlayerAttrs> {
 
     oninit(vnode: Vnode<URLPlayerAttrs, this>) {
         if (
-            !vnode.attrs.url.startsWith(app.forum.attribute('baseUrl')) &&
-            !vnode.attrs.url.startsWith('https://raw.githubusercontent.com/')
+            !vnode.attrs.url.startsWith(app.forum.attribute('baseUrl'))
         ) {
-            this.errorMessage = 'The animation URL must be hosted on this website or GitHub';
+            this.errorMessage = 'The animation URL must be hosted on this website';
 
             return;
         }

@@ -84,13 +84,9 @@ export default class HomePage extends Page {
                     m(Link, {
                         href: '/t/animations',
                     }, 'Animations'),
-                    ' tag, and include the ',
+                    ' tag, and upload your CSV file in the post. The ',
                     m('code', '[tree]<url>[/tree]'),
-                    ' bbcode in the post body, where ',
-                    m('code', '<url>'),
-                    ' is a link to a valid CSV file hosted on GitHub (URL starts with ',
-                    m('code', 'https://raw.githubusercontent.com/'),
-                    ').',
+                    ' bbcode will automatically be inserted. I can whitelist external domains if CORS headers are configured.',
                 ]),
                 m('p', [
                     'The source code for this website can be found at ',

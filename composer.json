@@ -9,7 +9,8 @@
     "require": {
         "flarum/core": "^1.0",
         "flarum/bbcode": "*",
-        "flarum/tags": "*"
+        "flarum/tags": "*",
+        "fof/upload": "*"
     },
     "authors": [
         {
@@ -22,6 +23,11 @@
     "support": {
         "issues": "https://github.com/clarkwinkelmann/flarum-500led/issues",
         "source": "https://github.com/clarkwinkelmann/flarum-500led"
+    },
+    "autoload": {
+        "psr-4": {
+            "ClarkWinkelmann\\LED500\\": "src/"
+        }
     },
     "extra": {
         "flarum-extension": {
