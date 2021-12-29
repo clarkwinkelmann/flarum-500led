@@ -86,7 +86,16 @@ export default class HomePage extends Page {
                     }, 'Animations'),
                     ' tag, and upload your CSV file in the post. The ',
                     m('code', '[tree]<url>[/tree]'),
-                    ' bbcode will automatically be inserted. I can whitelist external domains if CORS headers are configured.',
+                    ' bbcode will automatically be inserted. You can optionally provide a ',
+                    m('code', 'framerate="<integer>"'),
+                    ' bbcode attribute. The value is the number of milliseconds between frames.',
+                ]),
+                m('p', [
+                    'You can also link the file directly from GitHub by filling ',
+                    m('code', '<url>'),
+                    ' with a URL that starts with ',
+                    m('code', 'https://raw.githubusercontent.com/'),
+                    '.',
                 ]),
                 m('p', [
                     'The source code for this website can be found at ',

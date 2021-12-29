@@ -1,6 +1,7 @@
 import {ClassComponent, Vnode} from 'mithril';
 import app from 'flarum/forum/app';
 import LoadingIndicator from 'flarum/common/components/LoadingIndicator';
+import RequestError from 'flarum/common/utils/RequestError';
 import Sequence from '../states/Sequence';
 import TreeState from '../states/Tree';
 import Player from './Player';
@@ -17,29 +18,36 @@ export default class URLPlayer implements ClassComponent<URLPlayerAttrs> {
 
     oninit(vnode: Vnode<URLPlayerAttrs, this>) {
         if (
-            !vnode.attrs.url.startsWith(app.forum.attribute('baseUrl'))
+            !vnode.attrs.url.startsWith(app.forum.attribute('baseUrl')) &&
+            !vnode.attrs.url.startsWith('https://raw.githubusercontent.com/')
         ) {
-            this.errorMessage = 'The animation URL must be hosted on this website';
+            this.errorMessage = 'The animation URL must be hosted on this website or GitHub';
 
             return;
         }
 
-        app.request({
+        // Can't use app.request because it messes up CORS by sending an OPTIONS request which GitHub denies
+        m.request({
             method: 'GET',
             url: vnode.attrs.url,
-            // Flarum tries to always parse everything to JSON. So we'll over-encode it so Flarum can decode to plaintext later
-            extract: (text: string) => JSON.stringify(text),
+            extract: xhr => {
+                const status = xhr.status;
+
+                if (status < 200 || status > 299) {
+                    throw new RequestError(status as any, xhr.responseText, {}, xhr);
+                }
+
+                return xhr.responseText;
+            },
         }).then(response => {
             this.sequence = new Sequence(response);
 
             m.redraw();
         }).catch(error => {
-            if (error && error.alert && error.alert.content) {
-                this.errorMessage = [
-                    'Error downloading file:',
-                    m('br'),
-                    error.alert.content,
-                ];
+            console.error(error);
+
+            if (error && error.status) {
+                this.errorMessage = 'Error downloading file: HTTP ' + error.status;
             } else {
                 this.errorMessage = 'Error downloading file';
             }
