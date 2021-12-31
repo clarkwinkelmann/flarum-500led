@@ -56,7 +56,11 @@ export default class HomePage extends Page {
 
                                 reader.onload = () => {
                                     this.urlAttrs = null;
-                                    this.sequence = new Sequence(reader.result as string);
+                                    try {
+                                        this.sequence = new Sequence(reader.result as string);
+                                    } catch (error) {
+                                        alert(error);
+                                    }
                                     this.uniqueKey++;
                                     m.redraw();
                                 };

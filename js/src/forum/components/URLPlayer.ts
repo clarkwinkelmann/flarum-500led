@@ -40,7 +40,15 @@ export default class URLPlayer implements ClassComponent<URLPlayerAttrs> {
                 return xhr.responseText;
             },
         }).then(response => {
-            this.sequence = new Sequence(response);
+            try {
+                this.sequence = new Sequence(response);
+            } catch (error) {
+                if (error instanceof Error) {
+                    this.errorMessage = error.message;
+                } else {
+                    alert(error);
+                }
+            }
 
             m.redraw();
         }).catch(error => {
