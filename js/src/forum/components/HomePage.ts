@@ -67,6 +67,18 @@ export default class HomePage extends Page {
                             }
                         },
                     }),
+                    m('p', 'or paste a GitHub URL:'),
+                    m('input.FormControl', {
+                        type: 'text',
+                        value: this.urlAttrs?.url,
+                        oninput: (event: InputEvent) => {
+                            this.urlAttrs = {
+                                url: (event.target as HTMLInputElement).value,
+                            };
+                            this.uniqueKey++;
+                        },
+                        placeholder: 'https://raw.githubusercontent.com/...',
+                    }),
                     m('p', 'or choose from the community:'),
                     m(DiscussionList, {
                         state: this.list,
@@ -104,7 +116,7 @@ export default class HomePage extends Page {
                 m('p', [
                     'The source code for this website can be found at ',
                     m('a', {
-                        href: 'github.com/clarkwinkelmann/flarum-500led',
+                        href: 'https://github.com/clarkwinkelmann/flarum-500led',
                     }, 'clarkwinkelmann/flarum-500led'),
                     '.',
                 ]),
